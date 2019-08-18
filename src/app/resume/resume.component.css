@@ -1,0 +1,10 @@
+.persnoaldata{
+    margin: 5em;
+    padding: 10px;
+    align-content: center;
+    text-align: center
+}
+input{
+    margin-block-start: 2em;
+    margin-block-end: 5em;
+}
