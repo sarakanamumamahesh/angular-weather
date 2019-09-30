@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  pixelbayapikey: '12884374-de45f8a3c47fcd7f0108d0dc8',
-  PIXABAY_API_URL: 'https://pixabay.com/api/?key=',
+  apikey: 'APPID=7c97ebdd0658bc2522e7f77446b7828e'
 };
 
 /*

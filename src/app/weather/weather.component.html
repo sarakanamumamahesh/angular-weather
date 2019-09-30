@@ -1,3 +1,22 @@
-<p>
-  weather works!
-</p>
+<div class=" d-flex justify-content-center Search  " style="margin-top: 10%" >
+    <input type="text"  #city>
+    <button  type="submit" class="btn btn-primary" style="margin-left: 10px " (click)="getweather(city.value)"  ><fa-icon [icon]="facloudsunrain"></fa-icon>Serarch</button>
+   </div>
+<div class=nav nav-bar>
+    <br>
+ <fa-icon [icon]="facoffee" style="margin-left: 50%"></fa-icon>
+</div>
+<div class="container-fluid text-center">
+    <h3 class="text-center">{{wetherInfo.name}}</h3>
+   <label style="margin-right: 20px">CityId:<h3>{{wetherInfo.id}}</h3></label> 
+    <label style="margin-right: 20px">MinTemprature <h3 class="text-center">{{wetherInfo.main.temp_min}}</h3></label>
+    <label style="margin-right: 20px">MaxTemprature <h3 class="text-center">{{wetherInfo.main.temp_max}}</h3></label>
+    <label style="margin-right: 20px">Humidity<h3 class="text-center">{{wetherInfo.main.humidity}}</h3></label>
+    <label style="margin-right: 20px">Weather<h3 class="text-center">{{wetherInfo.weather[0].description}}</h3></label>
+</div>
+
+
+
+    
+    
+  

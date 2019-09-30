@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ImageService } from 'src/services/image.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Users } from './services/apirequest.services';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiserviceService } from './apiservice.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeatherComponent } from './weather/weather.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,10 +13,11 @@ import { WeatherComponent } from './weather/weather.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FontAwesomeModule
   ],
-  providers: [ImageService, Users, HttpClient],
+  providers: [ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
