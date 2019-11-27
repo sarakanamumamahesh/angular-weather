@@ -1,22 +1,80 @@
-<div class=" d-flex justify-content-center Search  " style="margin-top: 10%" >
-    <input type="text"  #city>
-    <button  type="submit" class="btn btn-primary" style="margin-left: 10px " (click)="getweather(city.value)"  ><fa-icon [icon]="facloudsunrain"></fa-icon>Serarch</button>
-   </div>
-<div class=nav nav-bar>
-    <br>
- <fa-icon [icon]="facoffee" style="margin-left: 50%"></fa-icon>
+<div class="container-fluid">
+    <fa-icon [icon]="faarrowleft" [routerLink]="['/home']" routerLinkActive="router-link-active" style="font-size: 3em;" ></fa-icon>
 </div>
-<div class="container-fluid text-center">
-    <h3 class="text-center">{{wetherInfo.name}}</h3>
-   <label style="margin-right: 20px">CityId:<h3>{{wetherInfo.id}}</h3></label> 
-    <label style="margin-right: 20px">MinTemprature <h3 class="text-center">{{wetherInfo.main.temp_min}}</h3></label>
-    <label style="margin-right: 20px">MaxTemprature <h3 class="text-center">{{wetherInfo.main.temp_max}}</h3></label>
-    <label style="margin-right: 20px">Humidity<h3 class="text-center">{{wetherInfo.main.humidity}}</h3></label>
-    <label style="margin-right: 20px">Weather<h3 class="text-center">{{wetherInfo.weather[0].description}}</h3></label>
-</div>
+    <div class="container-fluid">
+        <h1 class="text-center ">
+            Angular OpenWeather Api App 
+        </h1>
+            <div class="icon text-center">
+                <fa-icon [icon]="faspinner" [spin]="true" id="icon"  ></fa-icon>
+            </div>
+        <div class=" d-flex justify-content-center Search  " style="margin-left: 10%" >
+            <br>
+            <input type="text" placeholder="Hyderabad" #city>
+            <button  type="submit" class="btn btn-primary" style="margin-left: 10px " (click)="getweather(city.value)"  ><fa-icon [icon]="facloudsunrain"></fa-icon>Serarch</button>
+        </div>
+        <div class="icon text-center"><fa-icon [icon]="facoffee" id="icon"></fa-icon></div>
+            
+            <h2 class="text-center" >{{wetherInfo?.name}}</h2>
+    </div>
 
-
-
-    
-    
-  
+    <div *ngIf="visble" style="margin-left: 15%;" class="container-fluid">
+     <ul class=" text-center list-group list-group-horizontal">
+<li class="list-group-item">
+    <legend >CityId<h4 >{{wetherInfo?.id}}</h4></legend> 
+</li>
+<li class="list-group-item">
+    <legend >MinTemprature <h4 class=" text-center">{{wetherInfo?.main.temp_min}}</h4>
+        <fa-icon [icon]="fathermometerempty" style="color: rgb(154, 155, 236);" ></fa-icon> 
+    </legend>
+</li>
+<li class="list-group-item">
+    <legend >Weather<h4 class="text-center">{{wetherInfo?.weather[0].description}}</h4>
+        <fa-icon [icon]="facloud" style="color: rgb(33, 20, 212);"  ></fa-icon>
+    </legend>
+</li>
+    <li class="list-group-item">
+        <legend  >MaxTemprature <h4 class="text-center">{{wetherInfo?.main.temp_max}}</h4>
+            <fa-icon [icon]="fathermometerfull" style="color: red;"  ></fa-icon>
+        </legend>
+    </li>
+    <li class="list-group-item">
+        <legend >Humidity<h4 class="text-center">{{wetherInfo?.main.humidity}}</h4></legend> 
+    </li>
+       </ul>
+    </div>
+    <div class= "container-fluid text-center">
+    <p style="font-size: 3em;">{{errordata?.error.message}}</p>
+    </div>
+   
+    <div class="container-fluid">
+        <h3 >Previous Search List</h3> 
+        <ul class=" text-center list-group list-group-horizontal" *ngFor="let data of pastwetherInfo">
+            
+            <li class="list-group-item">
+                <legend >CityName<h5 class="text-center">{{data?.name}}</h5></legend> 
+            </li>
+            
+            <li class="list-group-item">
+                <legend >CityId<h5 >{{wetherInfo?.id}}</h5></legend> 
+            </li>
+            <li class="list-group-item">
+                <legend>MinTemprature <h5 class=" text-center">{{data?.main.temp_min}}</h5>
+                    <fa-icon [icon]="fathermometerempty" style="color: rgb(154, 155, 236);" ></fa-icon> 
+                </legend>
+            </li>
+            <li class="list-group-item">
+                <legend>Weather<h5 class="text-center">{{data?.weather[0].description}}</h5>
+                    <fa-icon [icon]="facloud" style="color: rgb(33, 20, 212);"  ></fa-icon>
+                </legend>
+            </li>
+                <li class="list-group-item">
+                    <legend  >MaxTemprature <h5 class="text-center">{{data?.main.temp_max}}</h5>
+                        <fa-icon [icon]="fathermometerfull" style="color: red;"  ></fa-icon>
+                    </legend>
+                </li>
+                <li class="list-group-item">
+                    <legend >Humidity<h5 class="text-center">{{data?.main.humidity}}</h5></legend> 
+                </li>
+                   </ul>
+    </div>

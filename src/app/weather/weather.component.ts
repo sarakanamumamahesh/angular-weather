@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  HttpClient} from '@angular/common/http';
 import { ApiserviceService} from '../apiservice.service';
-import { faCoffee, faHotdog, faWindowRestore , faCloudSunRain} from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCoffee, faCloud , faCloudSunRain, faThermometerFull, faThermometerEmpty, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import {  Observable } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -9,24 +10,18 @@ import { faCoffee, faHotdog, faWindowRestore , faCloudSunRain} from '@fortawesom
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-wetherInfo = {
-  'name': '',
-  'id': '',
-   'main': {
-    'temp_min': '',
-    'temp_max': '',
-    'humidity': ''
-   },
-   'weather': [
-     {
-       'description': ''
-     }
-   ]
-};
+visble: boolean;
+obser: Observable<object>;
+errordata;
+wetherInfo ;
+pastwetherInfo: Array<any> = [];
 facloudsunrain = faCloudSunRain;
+facloud = faCloud;
 facoffee = faCoffee;
-fahotdog  = faHotdog;
-fawindow = faWindowRestore;
+faarrowleft = faArrowLeft;
+fathermometerfull = faThermometerFull;
+fathermometerempty = faThermometerEmpty;
+faspinner = faSpinner;
   constructor(private http: HttpClient, private api: ApiserviceService) {
 
   }
@@ -35,9 +30,17 @@ fawindow = faWindowRestore;
 
   }
   getweather(city) {
-    this.api.getdata(city);
-    this.wetherInfo = this.api.data;
-    console.log(this.api.data);
+   this.obser = this.api.getdata(city);
+   this.obser.subscribe(
+      (res) => {this.visble = true, this.wetherInfo = res; this.errordata = null;
+      if (this.pastwetherInfo.length < 5) {
+        this.pastwetherInfo.push(res);
+      } else {
+        this.pastwetherInfo.pop();
+        this.pastwetherInfo.push(res);
+      }
+      }
+      , (error) => {this.errordata = error, this.visble = false; });
 
 
   }

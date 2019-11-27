@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apikey: 'APPID=7c97ebdd0658bc2522e7f77446b7828e'
+
 };
 
 /*

@@ -1,5 +1,21 @@
-.row{
-    padding-left: 50% ;
-    margin:5px;
-    margin-top:1px; 
+.sidenav{
+background: 300px;
+background-color: aquamarine;
+}
+#icon{
+    font-size: 3em;
+    padding: 3px;
+}
+h1{
+    padding: 30px 10px 10px 10px;
+    color: aqua;
+}
+h4{
+    color: rgb(241, 24, 187);
+}
+h5{
+    color: cornflowerblue;
+}
+h3{
+    color: crimson;
 }
